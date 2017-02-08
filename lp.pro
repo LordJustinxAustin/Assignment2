@@ -25,3 +25,6 @@ sum-up-numbers-general(Z,N). %if the element is a number then continue
 sum-up-numbers-general([A|Z],N) :-
 sum-up-numbers-general(Z,Summ),
 N is A+ Summ. %contniue to add recursively based on element 
+
+%Question 3
+
