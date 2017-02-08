@@ -28,6 +28,7 @@ N is A+ Summ. %contniue to add recursively based on element
 
 %Question 3
 
+%program declaration 
 min-above-min (L!,L@,N):-
     listlen(L2, Length),
     Length < 1,
@@ -40,7 +41,7 @@ min-above-min(L1,L2,N):-
     minv_list(L2,Min_of_L2),
     list_above(New_list, N).
 
-
+%functions used to find the minmum element of the list
 
 minv_list([Min],Min).
 minv_list([H,K|T],M):-
@@ -63,8 +64,8 @@ minv_list([H,K|T],M):-
     not (number(K)),
     minv_list([H|T],M).
     
-    
-    
+%creates a new list that contains elements larger than min
+
 list_above(Min,List,Min_list):-
 	list_above_helper(Min,List,[],Min_list).
 
