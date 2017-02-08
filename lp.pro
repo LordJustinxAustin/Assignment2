@@ -28,3 +28,15 @@ N is A+ Summ. %contniue to add recursively based on element
 
 %Question 3
 
+
+
+
+%Question 4
+
+common-unique-elements([],_,[]). 
+common-unique-elements([X|L1], L2, [X|L3]):-
+    member(L2,X),!,common-unique-elements(L1,L2,L3).
+common-unique-elements([_|L1], L2, L3):-
+    common-unique-elements(L1,L2,L3).
+member([X|_],X).
+member([_|T], X):- member(T,X).
