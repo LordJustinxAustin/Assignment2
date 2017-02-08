@@ -33,10 +33,10 @@ N is A+ Summ. %contniue to add recursively based on element
 
 %Question 4
 
-common-unique-elements([],_,[]). 
-common-unique-elements([X|L1], L2, [X|L3]):-
-    member(L2,X),!,common-unique-elements(L1,L2,L3).
-common-unique-elements([_|L1], L2, L3):-
-    common-unique-elements(L1,L2,L3).
-member([X|_],X).
-member([_|T], X):- member(T,X).
+common-unique-elements ( [] ,_,[]). %checks to see if the list are empty
+common-unique-elements([Z |L1], L2, [Z|L3]):- %z is head in List 1 & List 3
+    member (L2,Z) ,! ,common-unique-elements (L1 ,L2,L3). %L2 is checked for the z variable
+common-unique-elements( [_|L1], L2, L3):- 
+    common-unique-elements ( L1, L2, L3).
+member([Z|_],Z).
+member([_|T], Z):- member(T,Z).
