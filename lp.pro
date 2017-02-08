@@ -28,7 +28,78 @@ N is A+ Summ. %contniue to add recursively based on element
 
 %Question 3
 
+min-above-min (L!,L@,N):-
+    listlen(L2, Length),
+    Length < 1,
+    minv_list(L1,N).
+min-above-min(L1,_,N).
+    listlen(L1, Length),
+    Length < 1,
+    N is -1.
+min-above-min(L1,L2,N):-
+    minv_list(L2,Min_of_L2),
+    list_above(New_list, N).
 
+
+
+minv_list([Min],Min).
+minv_list([H,K|T],M):-
+    number(H),
+    number(K),
+    H=< K,
+    minv_list([H|T],M).
+    
+minv_list([H,K|T],M):-
+    number(H),
+    number(K),
+    H>K,
+    minv_list([K|T],M).
+    
+minv_list([H,K|T],M):-
+    not (number(H)),
+    minv_list([K|T],M).
+    
+minv_list([H,K|T],M):-
+    not (number(K)),
+    minv_list([H|T],M).
+    
+    
+    
+list_above(Min,List,Min_list):-
+	list_above_helper(Min,List,[],Min_list).
+
+list_above_helper(_,List,Acc,Acc):-
+	listlength(List,Length),
+	Length<1.
+
+
+
+list_above_helper(Min,[X|Y],Acc,Min_list):-
+	not(number(X)),
+	list_above_helper(Min, Y,Acc,Min_list).
+
+
+list_above_helper(Min,List,Acc,Min_list):-
+	listlength(List,Length),
+	Length>0,
+	[X|Y]=List,
+	number(X),
+	X>Min,
+	list_above_helper(Min,Y,[X|Acc],Min_list ).
+
+list_above_helper(Min,List,Acc,Min_list):-
+	listlength(List,Length),
+	Length>0,
+	[X|Y] = List,
+	number(X),
+	X =<Min,
+	list_above_helper(Min, Y, Acc, Min_list ).
+
+listlength([],0).
+
+listlength([_|Xs],L ):-
+	listlength(Xs,N),
+	L is N+1.
 
 
 %Question 4
